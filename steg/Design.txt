@@ -1,0 +1,36 @@
+Part 1 - Image into image
+	Encoding
+		input: java -cp bin/ steg.Steg image1.jpg image2.jpg encode
+		
+		//read image2 into StegImage
+		//image1.height * image1.width > i2.h * i2.w * 4
+		//break pixel data into 12 partitions ***
+			//beginning after first byte
+			//getPartition(int index) ***
+				//index : 1-12
+		//hide a partition in the 2 lsb's of each image1 pixel
+			//addToRed(byte partition)... ***
+			//getNextPixel?
+		
+	Decoding
+		input: java -cp bin/ steg.Steg image.jpg decode
+
+
+Part 2 - File into image
+
+	Encode
+		input: java -cp bin/ steg.Steg ../res/baseImage.jpg ../res/inFile.type encode
+
+		//read baseImage into StegImage
+		//calculate available space in image
+			//height * width * 6
+		//read in file save in array of bytes
+		//check space									----- Future Edit: allocate space according to the size of the file
+			//arraysize * 4 < spaceInImage
+		//sequentially add 2 bits to the image
+			//for loop through the byte array
+				//ints on StegImage keep track of postition
+
+		
+	Decode
+		input: java -cp bin/ steg.Steg ../dec/image.jpg decode
